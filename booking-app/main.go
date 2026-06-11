@@ -4,9 +4,9 @@ import "fmt"
 
 func main() {
 
-	var conferenceName string = "Go Conference"
+	conferenceName := "Go Conference"
 	const conferenceTickets int = 50
-	var remainingTickets int = 50
+	var remainingTickets uint = 50
 
 	fmt.Printf("conferenceTickets is %T, remaining Tickets is %T, conferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName)
 
@@ -21,10 +21,28 @@ func main() {
 
 	//datatypes
 	var userName string
+	var lastName string
+	var email string
 	var userTickets int
 	//ask user for their name
-	userName = "Tom"
-	userTickets = 2
-	fmt.Printf("USER %v BOOKED %v TICKETS.\n", userName, userTickets)
+	//using pointer we get users input
+	fmt.Println("Enter your name:")
+	fmt.Scan(&userName)
+	//used for user input
+
+	fmt.Println("Enter your last name:")
+	fmt.Scan(&lastName)
+
+	fmt.Println("Enter your email:")
+	fmt.Scan(&email)
+
+	fmt.Println("Enter number of tickets:")
+	fmt.Scan(&userTickets)
+
+	fmt.Println(remainingTickets)
+	//pointer
+	fmt.Println(&remainingTickets)
+
+	fmt.Printf("Thank you %v %v for booking %v tickets.You will receive a confirmation email at %v \n", userName, lastName, userTickets, email)
 
 }
