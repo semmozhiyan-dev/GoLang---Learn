@@ -99,6 +99,11 @@ func main() {
 			remainingTickets -= userTickets
 
 		} else {
+			if !isvalidName {
+				fmt.Printf(
+					"\nInvalid name or email. Please try again.\n",
+				)
+			}
 
 			fmt.Printf(
 				"\nInvalid input. Please try again.\n",
