@@ -21,7 +21,7 @@ func main() {
 		conferenceTickets, remainingTickets)
 	fmt.Println("Get your tickets here to attend!")
 
-	for remainingTickets > 0 && len(bookings) < 50 {
+	for true {
 
 		var userName string
 		var lastName string
