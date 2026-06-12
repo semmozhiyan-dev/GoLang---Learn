@@ -29,9 +29,6 @@ func main() {
 			firstNames := getFirstNames()
 			fmt.Printf("The first names of our bookings are: %v\n", firstNames)
 
-			// Pointer Example
-			fmt.Printf("Address of remainingTickets: %p\n", &remainingTickets)
-
 			// Conference Sold Out
 			if remainingTickets == 0 {
 				fmt.Println("\nOur conference is fully booked!")
@@ -51,17 +48,6 @@ func main() {
 			)
 
 		}
-	}
-	city := "london"
-	switch city {
-	case "new york":
-		fmt.Println("Welcome to New York!")
-	case "singapore":
-		fmt.Println("Welcome to Singapore!")
-	case "london":
-		fmt.Println("Welcome to London!")
-	default:
-		fmt.Println("Welcome to our conference!")
 	}
 
 }
