@@ -42,7 +42,7 @@ func main() {
 		fmt.Scan(&userTickets)
 
 		// Ticket Validation
-		if userTickets <= remainingTickets {
+		if userTickets < remainingTickets {
 
 			remainingTickets -= userTickets
 
@@ -92,6 +92,10 @@ func main() {
 				fmt.Println("Come back next year.")
 				break
 			}
+
+		} else if userTickets == remainingTickets {
+
+			remainingTickets -= userTickets
 
 		} else {
 
