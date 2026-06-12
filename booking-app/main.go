@@ -40,9 +40,10 @@ func main() {
 
 		fmt.Print("Enter number of tickets: ")
 		fmt.Scan(&userTickets)
-
+		//user validation
+		isvalidName := len(userName) >= 2 && len(lastName) >= 2 && strings.Contains(email, "@") && userTickets > 0 && userTickets <= remainingTickets
 		// Ticket Validation
-		if userTickets < remainingTickets {
+		if isvalidName {
 
 			remainingTickets -= userTickets
 
@@ -100,9 +101,7 @@ func main() {
 		} else {
 
 			fmt.Printf(
-				"\nSorry, we only have %v tickets remaining. You requested %v tickets.\n",
-				remainingTickets,
-				userTickets,
+				"\nInvalid input. Please try again.\n",
 			)
 
 		}
