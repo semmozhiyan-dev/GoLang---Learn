@@ -8,81 +8,99 @@ import (
 func main() {
 
 	conferenceName := "Go Conference"
-	const conferenceTickets int = 50
+	const conferenceTickets uint = 50
 	var remainingTickets uint = 50
 
-	fmt.Printf("conferenceTickets is %T, remaining Tickets is %T, conferenceName is %T\n", conferenceTickets, remainingTickets, conferenceName)
-
-	fmt.Println("Welcome to ", conferenceName, " booking application")
-	fmt.Println("we have total of", conferenceTickets, "tickets and", remainingTickets, "are still available")
-	fmt.Println("Get your tickets here to attend")
-
-	// its based on print formatting data we should use %v for variable
-	fmt.Printf("Welcome to %v booking application \n", conferenceName)
-	fmt.Printf("we have total of %v tickets and % v are still available \n", conferenceTickets, remainingTickets)
-	fmt.Println("Get your tickets here to attend")
-
-	//array
 	bookings := []string{}
 
-	//datatypes
+	fmt.Printf("conferenceTickets is %T, remainingTickets is %T, conferenceName is %T\n",
+		conferenceTickets, remainingTickets, conferenceName)
+
+	fmt.Printf("Welcome to %v booking application\n", conferenceName)
+	fmt.Printf("We have a total of %v tickets and %v are still available.\n",
+		conferenceTickets, remainingTickets)
+	fmt.Println("Get your tickets here to attend!")
 
 	for {
-		var userName string
 
+		var userName string
 		var lastName string
 		var email string
 		var userTickets uint
-		//ask user for their name
-		//using pointer we get users input
-		fmt.Println("Enter your name:")
-		fmt.Scan(&userName)
-		//used for user input
 
-		fmt.Println("Enter your last name:")
+		// User Input
+		fmt.Print("\nEnter your first name: ")
+		fmt.Scan(&userName)
+
+		fmt.Print("Enter your last name: ")
 		fmt.Scan(&lastName)
 
-		fmt.Println("Enter your email:")
+		fmt.Print("Enter your email: ")
 		fmt.Scan(&email)
 
-		fmt.Println("Enter number of tickets:")
+		fmt.Print("Enter number of tickets: ")
 		fmt.Scan(&userTickets)
 
-		if userTickets > remainingTickets {
-			fmt.Printf("we only have %v tickets remaining, so you can't book %v tickets \n", remainingTickets, userTickets)
-			continue
-		}
+		// Ticket Validation
+		if userTickets <= remainingTickets {
 
-		remainingTickets = remainingTickets - (userTickets)
-		//bookings[0] = userName + " " + lastName
+			remainingTickets -= userTickets
 
-		// slice
-		bookings = append(bookings, userName+" "+lastName)
+			// Add booking to slice
+			bookings = append(bookings, userName+" "+lastName)
 
-		fmt.Printf("The whole array: %v\n", bookings)
-		fmt.Printf("The user value: %v\n", bookings)
-		fmt.Printf("Array type: %T\n", bookings)
-		fmt.Printf("slice length: %v\n", len(bookings))
+			// Booking Confirmation
+			fmt.Printf(
+				"\nThank you %v %v for booking %v tickets.\n",
+				userName,
+				lastName,
+				userTickets,
+			)
 
-		fmt.Println(remainingTickets)
-		//pointer
-		fmt.Println(&remainingTickets)
+			fmt.Printf(
+				"You will receive a confirmation email at %v.\n",
+				email,
+			)
 
-		fmt.Printf("Thank you %v %v for booking %v tickets.You will receive a confirmation email at %v \n", userName, lastName, userTickets, email)
-		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, userTickets)
+			fmt.Printf(
+				"%v tickets remaining for %v.\n",
+				remainingTickets,
+				conferenceName,
+			)
 
-		firstNames := []string{}
-		//for each loop
-		for _, booking := range bookings {
-			var names = strings.Fields(booking)
-			firstNames = append(firstNames, names[0])
-		}
-		fmt.Printf("The first names of  bookings are: %v\n", firstNames)
+			// Display bookings
+			fmt.Printf("\nAll Bookings: %v\n", bookings)
+			fmt.Printf("Bookings Type: %T\n", bookings)
+			fmt.Printf("Number of Bookings: %v\n", len(bookings))
 
-		//if else
-		if remainingTickets == 0 {
-			fmt.Println("out conference is booked out . come back next year")
-			break
+			// Extract first names
+			firstNames := []string{}
+
+			for _, booking := range bookings {
+				names := strings.Fields(booking)
+				firstNames = append(firstNames, names[0])
+			}
+
+			fmt.Printf("First names of attendees: %v\n", firstNames)
+
+			// Pointer Example
+			fmt.Printf("Address of remainingTickets: %p\n", &remainingTickets)
+
+			// Conference Sold Out
+			if remainingTickets == 0 {
+				fmt.Println("\nOur conference is fully booked!")
+				fmt.Println("Come back next year.")
+				break
+			}
+
+		} else {
+
+			fmt.Printf(
+				"\nSorry, we only have %v tickets remaining. You requested %v tickets.\n",
+				remainingTickets,
+				userTickets,
+			)
+
 		}
 	}
 }
