@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 
@@ -23,42 +26,51 @@ func main() {
 	bookings := []string{}
 
 	//datatypes
-	var userName string
-	var lastName string
-	var email string
-	var userTickets uint
-	//ask user for their name
-	//using pointer we get users input
-	fmt.Println("Enter your name:")
-	fmt.Scan(&userName)
-	//used for user input
 
-	fmt.Println("Enter your last name:")
-	fmt.Scan(&lastName)
+	for {
+		var userName string
 
-	fmt.Println("Enter your email:")
-	fmt.Scan(&email)
+		var lastName string
+		var email string
+		var userTickets uint
+		//ask user for their name
+		//using pointer we get users input
+		fmt.Println("Enter your name:")
+		fmt.Scan(&userName)
+		//used for user input
 
-	fmt.Println("Enter number of tickets:")
-	fmt.Scan(&userTickets)
+		fmt.Println("Enter your last name:")
+		fmt.Scan(&lastName)
 
-	remainingTickets = remainingTickets - (userTickets)
-	//bookings[0] = userName + " " + lastName
+		fmt.Println("Enter your email:")
+		fmt.Scan(&email)
 
-	// slice
-	bookings = append(bookings, userName+" "+lastName)
+		fmt.Println("Enter number of tickets:")
+		fmt.Scan(&userTickets)
 
-	fmt.Printf("The whole array: %v\n", bookings)
-	fmt.Printf("The user value: %v\n", bookings)
-	fmt.Printf("Array type: %T\n", bookings)
-	fmt.Printf("slice length: %v\n", len(bookings))
+		remainingTickets = remainingTickets - (userTickets)
+		//bookings[0] = userName + " " + lastName
 
-	fmt.Println(remainingTickets)
-	//pointer
-	fmt.Println(&remainingTickets)
+		// slice
+		bookings = append(bookings, userName+" "+lastName)
 
-	fmt.Printf("Thank you %v %v for booking %v tickets.You will receive a confirmation email at %v \n", userName, lastName, userTickets, email)
-	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, userTickets)
+		fmt.Printf("The whole array: %v\n", bookings)
+		fmt.Printf("The user value: %v\n", bookings)
+		fmt.Printf("Array type: %T\n", bookings)
+		fmt.Printf("slice length: %v\n", len(bookings))
 
-	fmt.Printf("These are all our bookings: %v\n", bookings)
+		fmt.Println(remainingTickets)
+		//pointer
+		fmt.Println(&remainingTickets)
+
+		fmt.Printf("Thank you %v %v for booking %v tickets.You will receive a confirmation email at %v \n", userName, lastName, userTickets, email)
+		fmt.Printf("%v tickets remaining for %v\n", remainingTickets, userTickets)
+
+		firstNames := []string{}
+		for _, booking := range bookings {
+			var names = strings.Fields(booking)
+			firstNames = append(firstNames, names[0])
+		}
+		fmt.Printf("The first names of  bookings are: %v\n", firstNames)
+	}
 }
